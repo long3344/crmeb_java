@@ -2,8 +2,8 @@
 server:
   port: 8080
   domain: #配合swagger使用 # 待部署域名
-  version: CRMEB-JAVA-v1.3.3 # 当前代码版本
-  wechat-api-url:  #请求微信接口中专服务器 仅仅调试时使用
+  version: v1.3 # 当前代码版本
+  wechat-api-url:  #请求微信接口中转服务器
   wechat-js-api-debug: false #微信js api系列是否开启调试模式
   wechat-js-api-beta: true #微信js api是否是beta版本
   asyncConfig: false #是否同步config表数据到redis
@@ -11,8 +11,8 @@ server:
 
 spring:
   profiles:
-  #  配置的环境
-#    active: #spring.profiles.active#
+    #  配置的环境
+    #    active: #spring.profiles.active#
     active:
   servlet:
     multipart:
@@ -28,17 +28,17 @@ spring:
 
 
   #  数据库配置
-    datasource:
+  datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/crmeb_java?characterEncoding=utf-8&useSSL=false&serverTimeZone=GMT+8
+    url: jdbc:mysql://127.0.0.1:3306/crmeb?characterEncoding=utf-8&useSSL=false&serverTimeZone=GMT+8
     username: root
-    password: password
+    password: 123456long
   redis:
-    host: 127.0.0.1 #地址
+    host: 47.114.112.205 #地址
     port: 6379 #端口
-    password: password
-    timeout: 1000 # 连接超时时间（毫秒）
+    password:
+    timeout: 30000 # 连接超时时间（毫秒）
     database: 0 #默认数据库
     jedis:
       pool:
@@ -66,7 +66,7 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
     db-config:
-#      logic-delete-field: isDel  #全局逻辑删除字段值 3.3.0开始支持，详情看下面。
+      #      logic-delete-field: isDel  #全局逻辑删除字段值 3.3.0开始支持，详情看下面。
       logic-delete-value: 1 # 逻辑已删除值(默认为 1)
       logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
 
