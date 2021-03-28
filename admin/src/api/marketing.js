@@ -12,6 +12,17 @@ export function marketingListApi(params) {
   })
 }
 
+/**
+ * 外卖优惠券 列表
+ * @param pram
+ */
+export function outCouponListApi(params) {
+  return request({
+    url: '/admin/marketing/outCoupon/list',
+    method: 'get',
+    params
+  })
+}
 
 /**
  * 优惠券 详情

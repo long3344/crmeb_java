@@ -43,6 +43,23 @@ const marketingRouter = {
           meta: { title: '优惠券列表', icon: '' }
         },
         {
+          path: 'outCoupon',
+          component: () => import('@/views/marketing/coupon/outCoupon/index'),
+          name: 'List',
+          meta: { title: '外卖优惠券', icon: '' }
+        },
+        {
+          path: 'outCoupon/save/:id?',
+          name: 'couponAdd',
+          meta: {
+            title: '优惠劵添加',
+            noCache: true,
+            activeMenu: `/marketing/coupon/outCoupon`
+          },
+          hidden: true,
+          component: () => import('@/views/marketing/coupon/outCoupon/creatCoupon')
+        },
+        {
           path: 'record',
           component: () => import('@/views/marketing/coupon/record/index'),
           name: 'Record',
