@@ -97,8 +97,6 @@ JAVA版商城系统是基于Java(SpringBoot) + Vue(Element UI) + UniApp开发的
 |gitHub| https://github.com/crmeb/crmeb_java|
 |gitee|https://gitee.com/ZhongBangKeJi/crmeb_java|
 
-![](https://gitee.com/stivepeim/img4mk/raw/master/20210205091002.jpeg)
-
 ## 运行环境及框架
 ~~~
 
