@@ -15,8 +15,8 @@
             </el-input>
           </div>
         </div>
-        <router-link :to=" { path: '/marketing/coupon/list/save' } ">
-          <el-button size="small" type="primary">添加优惠劵</el-button>
+        <router-link :to=" { path: '/marketing/coupon/outCoupon/save' } ">
+          <el-button size="small" type="primary">添加外卖优惠劵</el-button>
         </router-link>
       </div>
       <el-table
@@ -36,54 +36,53 @@
           min-width="180"
         />
         <el-table-column
-          prop="bannerPic"
           label="横幅图片"
-          min-width="180"
-        />
+          min-width="400"
+        >
+          <template slot-scope="scope">
+                <div class="demo-image__preview mr10">
+                  <el-image
+                    :src="scope.row.bannerPic"
+                    :preview-src-list="[scope.row.bannerPic]"
+                  />
+                </div>
+          </template>
+        </el-table-column>
         <el-table-column
-          prop="icon"
           label="图标"
-          min-width="180"
-        />
+          min-width="400"
+        >
+          <template slot-scope="scope">
+                <div class="demo-image__preview mr10">
+                  <el-image
+                    :src="scope.row.icon"
+                    :preview-src-list="[scope.row.icon]"
+                  />
+                </div>
+          </template>
+        </el-table-column>
         <el-table-column
           prop="minApp"
           label="小程序配置"
           min-width="180"
         />
         <el-table-column
+          prop="sort"
           min-width="260"
-          label="领取日期"
-        >
-          <template slot-scope="{ row }">
-            <div v-if="row.receiveEndTime">
-              {{ row.receiveStartTime }} - {{ row.receiveEndTime }}
-            </div>
-            <span v-else>不限时</span>
-          </template>
-        </el-table-column>
+          label="数量"
+        />
         <el-table-column
+          prop="tabId"
           min-width="260"
-          label="使用时间"
-        >
-          <template slot-scope="{ row }">
-            <div v-if="row.day">
-              {{ row.day }}天
-            </div>
-            <span v-else>
-               {{ row.useStartTime }} - {{ row.useEndTime }}
-            </span>
-          </template>
-        </el-table-column>
+          label="tabId"
+        />
         <el-table-column
           min-width="100"
-          label="发布数量"
+          label="类型"
         >
           <template slot-scope="{ row }">
-            <span v-if=" !row.isLimited ">不限量</span>
-            <div v-else>
-              <span class="fa">发布：{{ row.total }}</span>
-              <span class="sheng">剩余：{{ row.lastTotal }}</span>
-            </div>
+            <span v-if="row.type==1">天天可领</span>
+            <span v-if="row.type==2">限时秒杀</span>
           </template>
         </el-table-column>
         <el-table-column
@@ -190,7 +189,7 @@
           page: 1,
           limit: 20,
           status: '',
-          name: ''
+          name: null
         },
         tableFromIssue: {
           page: 1,
@@ -240,7 +239,7 @@
         this.tableFromIssue.limit = val
         this.getIssueList()
       },
-      // 列表
+      // 外卖优惠券列表
       getList() {
         this.listLoading = true
         outCouponListApi(this.tableFrom).then(res => {

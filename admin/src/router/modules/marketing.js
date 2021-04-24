@@ -52,7 +52,7 @@ const marketingRouter = {
           path: 'outCoupon/save/:id?',
           name: 'couponAdd',
           meta: {
-            title: '优惠劵添加',
+            title: '外卖优惠劵添加',
             noCache: true,
             activeMenu: `/marketing/coupon/outCoupon`
           },

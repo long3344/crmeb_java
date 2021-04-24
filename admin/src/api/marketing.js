@@ -61,6 +61,18 @@ export function couponSaveApi(data) {
 }
 
 /**
+ * 外卖优惠券 创建
+ * @param pram
+ */
+export function outCouponSaveApi(data) {
+  return request({
+    url: '/admin/marketing/outCoupon/save',
+    method: 'post',
+    data
+  })
+}
+
+/**
  * 优惠券 修改状态
  * @param pram
  */
