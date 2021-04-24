@@ -80,6 +80,7 @@ public class WebConfig implements WebMvcConfigurer {
                 excludePathPatterns("/api/admin/payment/callback/**").
 //                excludePathPatterns("/api/admin/system/role/menu").
                 excludePathPatterns("/api/admin/system/role/info").
+                excludePathPatterns("/api/admin/marketing/outCoupon/**").
                 excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");
 
         //后台权限规则

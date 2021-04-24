@@ -10,6 +10,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author wb-twl390144
@@ -51,4 +52,13 @@ public class OutCoupon implements Serializable {
 
     @ApiModelProperty(value = "优惠券领取地址")
     private String url;
+
+    @ApiModelProperty(value = "状态（0：关闭，1：开启）")
+    private Boolean status;
+
+    @ApiModelProperty(value = "创建时间")
+    private Date createTime;
+
+    @ApiModelProperty(value = "更新时间")
+    private Date updateTime;
 }

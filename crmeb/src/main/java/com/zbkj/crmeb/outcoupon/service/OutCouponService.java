@@ -3,6 +3,7 @@ package com.zbkj.crmeb.outcoupon.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.common.PageParamRequest;
 import com.zbkj.crmeb.outcoupon.model.OutCoupon;
+import com.zbkj.crmeb.outcoupon.request.OutCouponQueryRequest;
 
 import java.util.List;
 
@@ -12,5 +13,7 @@ import java.util.List;
  */
 public interface OutCouponService extends IService<OutCoupon> {
 
-    List<OutCoupon> getList(PageParamRequest pageParamRequest);
+    List<OutCoupon> getList(OutCouponQueryRequest request, PageParamRequest paramRequest);
+
+    boolean create(OutCouponQueryRequest request);
 }

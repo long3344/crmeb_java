@@ -6,7 +6,9 @@ import com.common.PageParamRequest;
 import com.github.pagehelper.PageHelper;
 import com.zbkj.crmeb.outcoupon.dao.OutCouponDao;
 import com.zbkj.crmeb.outcoupon.model.OutCoupon;
+import com.zbkj.crmeb.outcoupon.request.OutCouponQueryRequest;
 import com.zbkj.crmeb.outcoupon.service.OutCouponService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -31,10 +33,24 @@ public class OutCouponServiceImpl extends ServiceImpl<OutCouponDao, OutCoupon> i
     private OutCouponDao dao;
 
     @Override
-    public List<OutCoupon> getList(PageParamRequest pageParamRequest) {
-        PageHelper.startPage(pageParamRequest.getPage(), pageParamRequest.getLimit());
-        LambdaQueryWrapper<OutCoupon> outCouponLambdaQueryWrapper = new LambdaQueryWrapper<>();
-        outCouponLambdaQueryWrapper.orderByDesc(OutCoupon::getSort).orderByDesc(OutCoupon::getId);
-        return dao.selectList(outCouponLambdaQueryWrapper);
+    public List<OutCoupon> getList(OutCouponQueryRequest request, PageParamRequest paramRequest) {
+        PageHelper.startPage(paramRequest.getPage(), paramRequest.getLimit());
+        LambdaQueryWrapper<OutCoupon> queryWrapper = new LambdaQueryWrapper<>();
+        if (null != request.getStatus()){
+            queryWrapper.eq(OutCoupon::getStatus,request.getStatus());
+        }
+        if (null!=request.getName()){
+            queryWrapper.eq(OutCoupon::getName,request.getName());
+        }
+        queryWrapper.orderByDesc(OutCoupon::getSort).orderByDesc(OutCoupon::getId);
+        return dao.selectList(queryWrapper);
+    }
+
+    @Override
+    public boolean create(OutCouponQueryRequest request) {
+        OutCoupon outCoupon = new OutCoupon();
+        BeanUtils.copyProperties(request,outCoupon);
+
+        return false;
     }
 }
