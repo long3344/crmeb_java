@@ -13,7 +13,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author wb-twl390144
+ * @author long
  * @date 2021/02/25
  */
 @Data

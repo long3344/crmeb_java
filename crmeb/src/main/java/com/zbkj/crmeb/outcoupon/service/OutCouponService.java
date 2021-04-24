@@ -8,7 +8,7 @@ import com.zbkj.crmeb.outcoupon.request.OutCouponQueryRequest;
 import java.util.List;
 
 /**
- * @author wb-twl390144
+ * @author long
  * @date 2021/02/25
  */
 public interface OutCouponService extends IService<OutCoupon> {

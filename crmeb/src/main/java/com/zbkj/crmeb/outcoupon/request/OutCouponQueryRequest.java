@@ -7,17 +7,16 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("eb_store_coupon")
-@ApiModel(value="StoreCouponRequest对象", description="优惠券表")
+@ApiModel(value = "StoreCouponRequest对象", description = "优惠券表")
 public class OutCouponQueryRequest implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "优惠券名称", required = true)
     private String name;
